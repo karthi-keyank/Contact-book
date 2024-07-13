@@ -1,16 +1,8 @@
 #!/bin/bash
 
-# Debug message with the passed number
-echo "Debug: number passed to script is $1"
-number=$1
-
 # Function to check if the device is rooted
 is_rooted() {
-  if [ "$(id -u)" -eq 0 ]; then
-    return 0
-  else
-    return 1
-  fi
+  [ "$(id -u)" -eq 0 ]
 }
 
 # Function to make a call in the background (requires root)
@@ -42,8 +34,21 @@ termux_telephony_call() {
 }
 
 # Main script execution
-if is_rooted; then
-  call_in_background
-else
-  call_normal
+main() {
+  echo "Debug: number passed to script is $1"
+  number=$1
+  
+  if is_rooted; then
+    call_in_background
+  else
+    call_normal
+  fi
+}
+
+# Error handling and script execution
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 <phone_number>"
+  exit 1
 fi
+
+main "$@"
