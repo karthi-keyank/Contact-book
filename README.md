@@ -20,7 +20,7 @@ pip install tabulate
 python main.py
 ```
 # solution for errors
-- this script was case sensitive
+- case sensitive for names 
 - so enter all in caps or small letters
 - if can't make outgoing call
 try this points
@@ -30,5 +30,4 @@ try this points
 - example +911234567890
 - don't enter like this
 - +91 1234567890 or +91 12345 67890
-- if you seeing error make issue
-- thank you for install 
+- if you still seeing error make issue
